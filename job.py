@@ -22,7 +22,7 @@ def spark_session(master_node, num_cores=16, mem_gb=256):
         # .config("spark.driver.blockManager.port", "6678")
         .config("spark.driver.host", master_node)
         .config("spark.driver.bindAddress", master_node)
-        .config("spark.executor.memory", "4gb") # make sure to increase this if you're using more cores per executor
+        .config("spark.executor.memory", "5gb") # make sure to increase this if you're using more cores per executor
         .config("spark.driver.memory", "4G")
         # .config("spark.executor.memoryOverhead", "8GB")
         # .config("spark.task.maxFailures", "100")
