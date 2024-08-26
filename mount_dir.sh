@@ -9,5 +9,5 @@ HOST=$5
 mkdir -p $LOCAL_DIR
 
 
-sshfs -o default_permissions,reconnect,auto_cache,idmap=user \
+sshfs -o allow_other,reconnect,auto_cache \
         -o IdentityFile=$KEY $USER@$HOST:$MOUNT_DIR $LOCAL_DIR
