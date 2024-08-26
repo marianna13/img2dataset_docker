@@ -72,7 +72,6 @@ if __name__ == "__main__":
         distributor="pyspark",
         compute_hash="md5",
         verify_hash=["md5", "md5"],
-        subjob_size=processes_count,
         resize_mode="no",
         subjob_size=10
     )
