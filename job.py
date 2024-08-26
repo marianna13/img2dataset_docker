@@ -22,7 +22,7 @@ def spark_session(master_node, num_cores=16, mem_gb=256):
         # .config("spark.driver.blockManager.port", "6678")
         .config("spark.driver.host", master_node)
         .config("spark.driver.bindAddress", master_node)
-        .config("spark.executor.memory", "5gb") # make sure to increase this if you're using more cores per executor
+        .config("spark.executor.memory", "4gb") # make sure to increase this if you're using more cores per executor
         .config("spark.driver.memory", "4G")
         # .config("spark.executor.memoryOverhead", "8GB")
         # .config("spark.task.maxFailures", "100")
@@ -54,27 +54,31 @@ if __name__ == "__main__":
     url_list = args.url_list
 
     spark = spark_session(master_node, processes_count, 256)
+
+    df = spark.read.parquet(url_list)
+    print(df.count())
+    df.show()
     
     s = time.time()
     print("starting download") 
-    download(
-        processes_count=processes_count,
-        thread_count=32,
-        # retries=0,
-        url_list=url_list,
-        output_folder=output_dir,
-        output_format="webdataset",
-        input_format="parquet",
-        url_col=args.url_col,
-        caption_col=args.caption_col,
-        enable_wandb=False,
-        number_sample_per_shard=5000,
-        distributor="pyspark",
-        compute_hash="md5",
-        verify_hash=["md5", "md5"],
-        subjob_size=processes_count,
-        resize_mode="no"
-    )
+    # download(
+    #     processes_count=processes_count,
+    #     thread_count=32,
+    #     # retries=0,
+    #     url_list=url_list,
+    #     output_folder=output_dir,
+    #     output_format="webdataset",
+    #     input_format="parquet",
+    #     url_col=args.url_col,
+    #     caption_col=args.caption_col,
+    #     enable_wandb=False,
+    #     number_sample_per_shard=5000,
+    #     distributor="pyspark",
+    #     compute_hash="md5",
+    #     verify_hash=["md5", "md5"],
+    #     subjob_size=processes_count,
+    #     resize_mode="no"
+    # )
 
     print(time.time() - s)
     print("Job finished!")
