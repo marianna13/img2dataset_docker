@@ -54,31 +54,27 @@ if __name__ == "__main__":
     url_list = args.url_list
 
     spark = spark_session(master_node, processes_count, 256)
-
-    df = spark.read.parquet(url_list)
-    print(df.count())
-    df.show()
     
     s = time.time()
     print("starting download") 
-    # download(
-    #     processes_count=processes_count,
-    #     thread_count=32,
-    #     # retries=0,
-    #     url_list=url_list,
-    #     output_folder=output_dir,
-    #     output_format="webdataset",
-    #     input_format="parquet",
-    #     url_col=args.url_col,
-    #     caption_col=args.caption_col,
-    #     enable_wandb=False,
-    #     number_sample_per_shard=5000,
-    #     distributor="pyspark",
-    #     compute_hash="md5",
-    #     verify_hash=["md5", "md5"],
-    #     subjob_size=processes_count,
-    #     resize_mode="no"
-    # )
+    download(
+        processes_count=processes_count,
+        thread_count=32,
+        # retries=0,
+        url_list=url_list,
+        output_folder=output_dir,
+        output_format="webdataset",
+        input_format="parquet",
+        url_col=args.url_col,
+        caption_col=args.caption_col,
+        enable_wandb=False,
+        number_sample_per_shard=5000,
+        distributor="pyspark",
+        compute_hash="md5",
+        verify_hash=["md5", "md5"],
+        subjob_size=processes_count,
+        resize_mode="no"
+    )
 
     print(time.time() - s)
     print("Job finished!")
