@@ -74,7 +74,7 @@ if __name__ == "__main__":
         verify_hash=["md5", "md5"],
         # image_size=256,
         resize_mode="no",
-        subjob_size=10
+        subjob_size=5
     )
 
     print(time.time() - s)
