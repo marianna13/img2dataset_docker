@@ -73,7 +73,8 @@ if __name__ == "__main__":
         compute_hash="md5",
         verify_hash=["md5", "md5"],
         subjob_size=processes_count,
-        resize_mode="no"
+        resize_mode="no",
+        subjob_size=10
     )
 
     print(time.time() - s)
