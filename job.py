@@ -68,10 +68,11 @@ if __name__ == "__main__":
         url_col=args.url_col,
         caption_col=args.caption_col,
         enable_wandb=False,
-        number_sample_per_shard=5000,
+        number_sample_per_shard=1000,
         distributor="pyspark",
         compute_hash="md5",
         verify_hash=["md5", "md5"],
+        # image_size=256,
         resize_mode="no",
         subjob_size=10
     )
