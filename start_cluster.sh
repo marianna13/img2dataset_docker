@@ -35,8 +35,8 @@ sleep 10
 
 # then start the spark worker node in the background
 MEM_IN_GB=$(($MEM / 1024))
-# take only 80% of the memory
-MEM_IN_GB=$(($MEM_IN_GB * 8 / 10))
+# take only 60% of the memory
+MEM_IN_GB=$(($MEM_IN_GB * 6 / 10))
 # concat a "G" to the end of the memory string
 MEM_IN_GB="$MEM_IN_GB"G
 echo "MEM IN GB: $MEM_IN_GB"
