@@ -5,6 +5,7 @@ mkdir -p $LOGS_DIR
 MASTER=$2
 MASTER_ADDR=$3
 REPO_DIR=$4
+MEM_IN_GB=$5
 
 NAME="img2dataset"
 
@@ -14,6 +15,6 @@ docker run --rm --network=host \
   -v /home:/home \
   -v /mnt/ceph:/mnt/ceph \
   --entrypoint=sh marianna13/spark-img2dataset \
-    $REPO_DIR/start_cluster.sh $MASTER $MASTER_ADDR &
+    $REPO_DIR/start_cluster.sh $MASTER $MASTER_ADDR $MEM_IN_GB &
 
 sleep 30
