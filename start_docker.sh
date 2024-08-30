@@ -7,6 +7,8 @@ MASTER_ADDR=$3
 REPO_DIR=$4
 MEM_IN_GB=$5
 
+echo "Mem in GB start docker: $MEM_IN_GB"
+
 NAME="img2dataset"
 
 docker run --rm --network=host \

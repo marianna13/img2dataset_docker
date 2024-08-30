@@ -4,6 +4,8 @@ GLOBAL_RANK=$1
 MASTER_ADDR=$2
 MEM_IN_GB=$3
 
+echo "Mem in GB start cluster: $MEM_IN_GB"
+
 
 CPUS=`grep -c ^processor /proc/cpuinfo`
 MEM=$((`grep MemTotal /proc/meminfo | awk '{print $2}'` / 1000)) # seems to be in MB
