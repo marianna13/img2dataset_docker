@@ -34,11 +34,11 @@ fi
 sleep 10
 
 # then start the spark worker node in the background
-MEM_IN_GB=$(($MEM / 1024))
-# take only 60% of the memory
-MEM_IN_GB=$(($MEM_IN_GB *  3/ 10))
-# concat a "G" to the end of the memory string
-MEM_IN_GB="$MEM_IN_GB"G
+# MEM_IN_GB=$(($MEM / 1024))
+# # take only 60% of the memory
+# MEM_IN_GB=$(($MEM_IN_GB *  3/ 10))
+# # concat a "G" to the end of the memory string
+# MEM_IN_GB="$MEM_IN_GB"G
 echo "MEM IN GB: $MEM_IN_GB"
 
 ./sbin/start-worker.sh -c $CPUS -m $MEM_IN_GB "spark://$MASTER_ADDR:7077"
