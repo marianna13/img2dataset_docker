@@ -2,6 +2,7 @@
 
 GLOBAL_RANK=$1
 MASTER_ADDR=$2
+MEM_IN_GB=$3
 
 
 CPUS=`grep -c ^processor /proc/cpuinfo`
