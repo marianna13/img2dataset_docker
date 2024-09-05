@@ -13,12 +13,18 @@ MEM=$((`grep MemTotal /proc/meminfo | awk '{print $2}'` / 1000)) # seems to be i
 LOCAL_IP=$(hostname -I | awk '{print $1}')
 LOCALDIR=/spark
 
+# set some environment variables
+
 
 export SPARK_MASTER="spark://$MASTER_ADDR:7077"
 export SPARK_MASTER_HOST=$MASTER_ADDR
 export SPARK_WORKER_DIR=$LOCALDIR/work
 export SPARK_LOCAL_DIRS=$LOCALDIR/local
 export SPARK_WORKER_LOG_DIR=$LOCALDIR/worker_logs
+
+# set spark driver memory
+conf_file=$SPARK_HOME/conf/spark-defaults.conf
+echo "spark.driver.memory ${MEM_IN_GB}g" >> $conf_file
 
 # set DNS
 # echo "nameserver 127.0.0.153" > /etc/resolv.conf
