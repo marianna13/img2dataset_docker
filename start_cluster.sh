@@ -24,7 +24,7 @@ export SPARK_WORKER_LOG_DIR=$LOCALDIR/worker_logs
 
 # set spark driver memory
 conf_file=$SPARK_HOME/conf/spark-defaults.conf
-echo "spark.driver.memory ${MEM_IN_GB}g" >> $conf_file
+# echo "spark.driver.memory ${MEM_IN_GB}g" >> $conf_file
 
 # set DNS
 # echo "nameserver 127.0.0.153" > /etc/resolv.conf
