@@ -37,7 +37,7 @@ if [ "$GLOBAL_RANK" -eq 0 ]; then
     echo -e "MASTER ADDR: $MASTER_ADDR\tGLOBAL RANK: $GLOBAL_RANK\tCPUS PER TASK: $CPUS\tMEM PER NODE: $MEM"
 
     # then start the spark master node in the background
-    ./sbin/start-master.sh -p 7077 -h $MASTER_ADDR
+    $SPARK_HOME/sbin/start-master.sh -p 7077 -h $MASTER_ADDR
 fi
 
 sleep 10
@@ -50,7 +50,7 @@ sleep 10
 # MEM_IN_GB="$MEM_IN_GB"G
 echo "MEM IN GB: $MEM_IN_GB"
 
-./sbin/start-worker.sh -c $CPUS -m $MEM_IN_GB "spark://$MASTER_ADDR:7077"
+$SPARK_HOME/sbin/start-worker.sh -c $CPUS -m $MEM_IN_GB "spark://$MASTER_ADDR:7077"
 echo "Hello from worker $GLOBAL_RANK"
 
 sleep 10
