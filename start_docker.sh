@@ -16,7 +16,7 @@ docker run --rm --network=host \
   --mount type=bind,source="$LOGS_DIR",target=/opt/spark/logs \
   -v /home:/home \
   -v /mnt/ceph:/mnt/ceph \
-  --entrypoint=sh marianna13/spark-img2dataset \
+  --entrypoint=sh marianna13/ray-img2dataset \
     $REPO_DIR/start_ray_cluster.sh $MASTER $MASTER_ADDR $MEM_IN_GB &
 
 sleep 30
