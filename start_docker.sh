@@ -13,10 +13,10 @@ NAME="img2dataset"
 
 docker run --rm --network=host \
   --name $NAME \
-  --mount type=bind,source="$LOGS_DIR",target=/opt/spark/logs \
+  --mount type=bind,source="$LOGS_DIR",target=/opt/ray/logs \
   -v /home:/home \
   -v /mnt/ceph:/mnt/ceph \
-  --entrypoint=sh marianna13/spark-img2dataset \
-    $REPO_DIR/start_spark_cluster.sh $MASTER $MASTER_ADDR $MEM_IN_GB &
+  --entrypoint=sh marianna13/ray-img2dataset \
+    $REPO_DIR/start_ray_cluster.sh $MASTER $MASTER_ADDR $MEM_IN_GB &
 
 sleep 30
