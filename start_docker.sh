@@ -7,6 +7,7 @@ MASTER_ADDR=$3
 REPO_DIR=$4
 MEM_IN_GB=$5
 
+CLUSTER_TYPE=$6
 echo "Mem in GB start docker: $MEM_IN_GB"
 
 NAME="img2dataset"
@@ -16,7 +17,7 @@ docker run --rm --network=host \
   --mount type=bind,source="$LOGS_DIR",target=/opt/ray/logs \
   -v /home:/home \
   -v /mnt/ceph:/mnt/ceph \
-  --entrypoint=sh marianna13/ray-img2dataset \
-    $REPO_DIR/start_ray_cluster.sh $MASTER $MASTER_ADDR $MEM_IN_GB &
+  --entrypoint=sh marianna13/$CLUSTER_TYPE-img2dataset \
+    $REPO_DIR/start_$CLUSTER_TYPE_cluster.sh $MASTER $MASTER_ADDR $MEM_IN_GB &
 
 sleep 30
