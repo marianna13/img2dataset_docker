@@ -26,7 +26,7 @@ sleep 10
 
 # if [ "$GLOBAL_RANK" -ne 0 ]; then
 CMD="
-    ray start --address=$MASTER_ADDR:$PORT --num-cpus=$NUM_CPUS --num-gpus=0 --memory=$MEM_IN_GB --block &"
+    ray start --address=$MASTER_ADDR:$PORT --block &"
 
 echo $CMD
 bash -c "$CMD"
