@@ -14,7 +14,7 @@ if [ "$GLOBAL_RANK" -eq 0 ]; then
 
     ray start --help
     CMD="
-        ray start --head --port=$PORT --num-cpus=$NUM_CPUS --num-gpus=0 --memory=$MEM_IN_GB --block &"
+        ray start --head --port=$PORT --num-cpus=$NUM_CPUS --num-gpus=0 --memory=$MEM_IN_GB --dashboard-host 0.0.0.0 --block &"
 
     echo $CMD
     bash -c "$CMD"

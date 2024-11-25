@@ -14,9 +14,7 @@ NAME="img2dataset"
 
 docker run --rm --network=host \
   --name $NAME \
-  --mount type=bind,source="$LOGS_DIR",target=/opt/ray/logs \
   -v /home:/home \
-  -v /mnt/ceph:/mnt/ceph \
   --entrypoint=sh marianna13/$CLUSTER_TYPE-img2dataset \
     $REPO_DIR/start_${CLUSTER_TYPE}_cluster.sh $MASTER $MASTER_ADDR $MEM_IN_GB &
 
